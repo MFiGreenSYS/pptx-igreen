@@ -1,0 +1,11 @@
+{
+  "name": "pptx-igreen-kit",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kit iGreen para PPTX (pptxgenjs + sharp), versões travadas iguais às dos decks aprovados (nov/2026).",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "pptxgenjs": "3.12.0",
+    "sharp": "0.33.5"
+  }
+}

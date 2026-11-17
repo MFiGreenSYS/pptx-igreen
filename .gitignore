@@ -1,0 +1,12 @@
+# instalado pelo instalar.ps1 / instalar.sh (npm ci a partir do package-lock.json)
+node_modules/
+__pycache__/
+*.pyc
+# saídas de teste e decks gerados
+_render/
+*_render/
+teste/_teste_assets/
+*.pptx
+~$*
+.DS_Store
+Thumbs.db

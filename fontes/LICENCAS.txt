@@ -1,0 +1,3 @@
+Montserrat (Julieta Ulanovsky e colaboradores) e Geist Mono (Vercel): SIL Open Font License 1.1.
+Podem ser distribuídas junto com a skill; não vender as fontes isoladamente.
+Impact não vem aqui: é fonte do sistema (Windows e macOS já trazem).
