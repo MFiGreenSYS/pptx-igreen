@@ -144,7 +144,7 @@ function novoDeck({ titulo = "iGreen", empresa = "iGreen Energy", capitulos = []
   const W = 13.333, H = 7.5, M = 0.6, CW = W - 2 * M;
   let n = 0;
 
-  const d = { pres, W, H, M, CW, C, F, tag, ASSET, graficos, mapaEstados, get n() { return n; } };
+  const d = { pres, W, H, M, CW, C, F, tag, ASSET, graficos, mapaEstados, avisos: [], get n() { return n; } };
 
   d.slide = () => { n++; return pres.addSlide(); };
 
@@ -175,9 +175,17 @@ function novoDeck({ titulo = "iGreen", empresa = "iGreen Energy", capitulos = []
     s.addMedia({ type: "video", path: mp4, x, y, w, h, cover: b64, objectName });
   };
 
-  // fundo: "escuro" = textura da marca (nunca preto chapado) · "verde" = verde cheio · "fumaca" (capa/fecho)
-  //        "cg1"/"cg2" = fundos da Conexão Green · { transp } apaga a textura onde houver muito texto pequeno
-  d.fundo = async (s, tipo = "escuro", { transp = 0, veuBase = true } = {}) => {
+  // fundo: "cg2" = o padrão, de capa a fecho · "verde" = verde cheio (nunca preto chapado)
+  //        "cg1" quase nunca: tem contorno de G e de lâmpada, briga com o logo do fecho e com título grande
+  //        { transp } apaga a textura onde houver muito texto pequeno
+  // EXCLUSIVOS DO EXPERT (17/11/2026): "fumaca" (bg_fumaca.jpg) e "escuro"/malha (bg_malha.jpg) — que é o tipo
+  //        padrão desta função. Fora de material do Expert não use; em deck do Expert passe { expert: true }.
+  d.fundo = async (s, tipo = "escuro", { transp = 0, veuBase = true, expert = false } = {}) => {
+    if (!expert && (tipo === "escuro" || tipo === "fumaca")) {
+      const m = `fundo "${tipo}" (slide ${d.n}) é exclusivo do Expert — use "cg2" ou "verde", ou passe { expert: true }`;
+      d.avisos.push(m);
+      console.warn("AVISO: " + m);
+    }
     if (tipo === "verde") { s.background = { color: C.G }; return; }
     s.background = { color: C.BG };
     const arq = { escuro: "bg_malha.jpg", fumaca: "bg_fumaca.jpg", cg1: "cg_bg1.jpg", cg2: "cg_bg2.jpg" }[tipo];
@@ -321,6 +329,7 @@ function novoDeck({ titulo = "iGreen", empresa = "iGreen Energy", capitulos = []
       if (r.status !== 0) throw new Error("anim.py falhou: " + (r.stderr || r.stdout || r.error));
       d.relatorioAnim = (r.stdout || "").trim();
     }
+    if (d.avisos.length) console.warn("\nAVISOS (" + d.avisos.length + "):\n- " + d.avisos.join("\n- "));
     return out;
   };
   return d;

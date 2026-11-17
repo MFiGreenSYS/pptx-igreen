@@ -5,8 +5,8 @@ Projeto de referência entre parênteses (pastas em `D:\iGreen.SYS\10_Gerador-de
 
 | Dinâmica | Quando usar | Como (kit) |
 |---|---|---|
-| **Capa cinema** | abertura | `fundo("fumaca")` ou vídeo de fundo + véu; kicker + título Impact 100–120 pt em 2 linhas, última em verde (BESS, Promoções) |
-| **Capa de fecho** | sempre | logo grande central (`cromo({logo:false})`) + `#NOSSAENERGIATRANSFORMA` |
+| **Capa cinema** | abertura | `fundo("cg2")` ou vídeo de fundo + véu; kicker + título Impact 100–120 pt em 2 linhas, última em verde (BESS, Promoções). `fumaca` só no Expert |
+| **Capa de fecho** | sempre | `fundo("cg2")` + logo grande central (`cromo({logo:false})`) + `#NOSSAENERGIATRANSFORMA` |
 | **Vídeo real de fundo** | assunto com cena (carro, placas, sede) | `d.video(s, mp4, capa.jpg, 0,0,W,H,"!!bg-x")` + véu `graficos.veuEsquerda()`; vídeos do Onboarding RH comprimidos (1280 px, 9 s, sem áudio). Vídeo com legenda queimada ou logo no canto: não usar (Ganhos) |
 | **Sanfona Morph** | várias opções do mesmo tipo (conexões) | N slides, painéis com nomes `!!painel-x`; o da vez abre (largura grande) e toca vídeo, os outros fecham com nome deitado (Ganhos 8–13) |
 | **Tipografia-cenário** | produto/hero | verde cheio, palavra gigante Impact 400–470 pt branca atrás, produto recortado na frente, ficha em linha embaixo (BESS 6: "BESS" + contêiner; lab: "MOB" + 3 carregadores) |

@@ -24,6 +24,12 @@ pptx-igreen/
   teste/                   deck de teste com todas as peças + rodar_teste.py
 ```
 
+## Regra de fundo (17/11/2026)
+
+`fumaca` (`bg_fumaca.jpg`) e `escuro`/malha (`bg_malha.jpg`) são **exclusivos do Expert**. Em qualquer outro deck use
+só `"verde"` ou `"cg2"` (o substituto do malha, serve de capa a fecho; `"cg1"` tem o contorno de um G que briga com o logo e com título grande), e **sempre passe o tipo**: `d.fundo(s)` sem argumento cai no
+malha. Em material do Expert, libere com `d.fundo(s, "fumaca", { expert: true })` — sem a chave o build avisa na saída.
+
 ## Fluxo de todo pedido
 
 1. **Entender antes de criar.** Ler o PDF inteiro (PyMuPDF), transcrever áudio (`transcrever.py`), listar o que pedem.
@@ -52,8 +58,8 @@ antes de sobrescrever. Se o PowerPoint estiver com o arquivo aberto (EBUSY), ger
 const kit = require(require("path").join(require("os").homedir(), ".claude/skills/pptx-igreen/scripts/lib/igreen.js"));
 const d = kit.novoDeck({ titulo: "Proposta X", capitulos: ["Introdução", "Análise", "Retorno"], total: 8 });
 const { C, F, M, W, tag } = d;                      // cores, fontes, margem 0.6", largura 13.333"
-let s = d.slide(); await d.fundo(s, "fumaca"); d.cromo(s, { capitulo: 0 });          // capa
-s = d.slide(); await d.fundo(s); d.cromo(s, { capitulo: 1 });                         // escuro + textura
+let s = d.slide(); await d.fundo(s, "cg2"); d.cromo(s, { capitulo: 0 });              // capa
+s = d.slide(); await d.fundo(s, "cg2"); d.cromo(s, { capitulo: 1 });                  // escuro + textura
 d.cabecalho(s, "01", "Análise · Consumo", ["CONSUMO", "E FATURA."]);
 d.ficha(s, "Distribuidora", "Energisa", 7, 1.7, 5.7, { passo: "c1" });
 await d.vidroNeon(s, 6.75, 0.75, 5.95, "Economia mensal", "R$ 177.194,35", "texto do PDF", { pilula: "por mês" });

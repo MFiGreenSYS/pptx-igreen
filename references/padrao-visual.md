@@ -17,13 +17,20 @@
   preto (`highlight: "0A0F0B"`) ou texto preto.
 
 ## Fundos (nunca preto chapado, nunca slide branco)
-- Escuro: textura da marca `fundos/bg_malha.jpg` (malha de pontos/linhas verdes) em tela cheia, no fundo da pilha,
-  nome `!!textura` (o Morph segura parada). Onde há muito texto pequeno: `transp: 35–40`. Véu de base escurece a
-  faixa da barra e das notas.
-- Capa e fecho: `fundos/bg_fumaca.jpg` (fumaça verde com partículas).
-- Verde cheio `18FF00` para alternar com o escuro (tipografia-cenário, slide de decisão). Texto preto.
-- Conexão Green: `fundos/cg_bg1.jpg` / `cg_bg2.jpg` + brilho no topo + submarca "conexão green".
-  Atenção: o `cg_bg1` tem o contorno de um G; atrás de gráfico parece um degrau vazio → use `cg_bg2`.
+
+> **Exclusivos do Expert — não usar (17/11/2026).** `bg_fumaca.jpg` (`fundo(s, "fumaca")`) e `bg_malha.jpg`
+> (`fundo(s, "escuro")`, que é o **padrão** quando se chama `d.fundo(s)` sem tipo) ficaram reservados aos materiais
+> do Expert. Em qualquer outro deck, use só verde cheio, `cg1` ou `cg2` — e **sempre passe o tipo**, porque omitir
+> cai no malha. Em deck do Expert, libere com `d.fundo(s, "fumaca", { expert: true })`; sem a chave o build avisa.
+
+- **`cg2` é o padrão, de capa a fecho** — `fundos/cg_bg2.jpg` + brilho no topo. É o substituto do malha.
+  Onde há muito texto pequeno: `transp: 35–40`.
+- **`cg1` quase nunca** — `fundos/cg_bg1.jpg` tem o contorno de um G e de uma lâmpada. Atrás de gráfico vira um
+  degrau vazio; atrás do logo do fecho, o contorno da lâmpada encosta no ícone do logo e atrás de título Impact
+  grande polui (visto no render de 17/11/2026). Só em slide de respiro, sem logo grande e sem gráfico.
+- **Verde cheio `18FF00`** para alternar com o escuro (tipografia-cenário, slide de decisão). Texto preto.
+- Com `cg1`/`cg2` vem a submarca "conexão green" no cromo quando o deck for Conexão Green; em deck de outro
+  produto, `cromo()` sem `submarca` — o fundo é só textura.
 - Slide claro (branco/menta) foi **rejeitado** em 16/11/2026 ("altere os slides em branco, deixe preto ou verde").
 
 ## Tipografia
@@ -53,4 +60,5 @@
 Linhas neon grossas com halo borrado · cartões inclinados · reflexo box-reflect · cartão de poeira/partículas ·
 arco simples de cartões · raios de "sol" girando · G de plástico 3D · mockup de MacBook · número gigante em abertura de
 capítulo · logo duplicado · texto encostando na borda · pessoa cortada em linha reta (dissolver com degradê) ·
-`glow_halo.png` (é um anel e aparece como argola) · brilho radial solto e forte · slide branco/menta.
+`glow_halo.png` (é um anel e aparece como argola) · brilho radial solto e forte · slide branco/menta ·
+fundo de fumaça (`bg_fumaca.jpg`) e textura de malha (`bg_malha.jpg`) fora de material do Expert (17/11/2026).

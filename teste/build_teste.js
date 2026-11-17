@@ -1,3 +1,5 @@
+// Deck de teste da skill: usa TODAS as peças do kit — inclusive os fundos "fumaca"/"escuro", que são
+// exclusivos do Expert e por isso vêm com { expert: true } aqui. Em deck normal, use "cg1"/"cg2"/"verde".
 // Deck de teste da skill: usa TODAS as peças do kit (fundos, cromo, cabeçalho, ficha, vidro, ícones, pílulas,
 // tipografia-cenário, barras 3D, vidro neon, mostrador, mockup de iPhone, mapa de estados, rodapé, capa e fecho).
 // Conteúdo de exemplo = números reais já aprovados (Promoções Conexão Green e Proposta BESS), só para teste.
@@ -27,13 +29,13 @@ const TMP = path.join(path.dirname(OUT), "_teste_assets");
   let s;
 
   // 1 · capa (fumaça)
-  s = d.slide(); await d.fundo(s, "fumaca"); d.cromo(s, { capitulo: 0 });
+  s = d.slide(); await d.fundo(s, "fumaca", { expert: true }); d.cromo(s, { capitulo: 0 });
   d.kicker(s, "Teste da skill · pptx-igreen", M, 2.0);
   d.t(s, [{ text: "TESTE DO", options: { breakLine: true } }, { text: "KIT iGREEN.", options: { color: C.G } }], M, 2.35, 11, 3.0,
     { fontFace: F.HF, fontSize: 110, lineSpacingMultiple: 0.84, objectName: tag("!!titulo", "a", "ascend") });
 
   // 2 · escuro com textura: cabeçalho + fichas + cartões de vidro com ícones + pílula
-  s = d.slide(); await d.fundo(s); d.cromo(s, { capitulo: 1 });
+  s = d.slide(); await d.fundo(s, "escuro", { expert: true }); d.cromo(s, { capitulo: 1 });
   d.cabecalho(s, "01", "Kit · peças básicas", ["CABEÇALHO", "E FICHA."], { tamanho: 54, w: 6 });
   [["Município", "Araguaína/TO"], ["Distribuidora", "Energisa"], ["Demanda contratada", "2.000 kW"]].forEach(([k, v], i) => d.ficha(s, k, v, 7.0, 1.3 + i * 0.62, W - M - 7.0, { passo: "a", atraso: 300 + i * 120 }));
   ["rocket", "gift", "money"].forEach((ic, i) => {
@@ -61,17 +63,17 @@ const TMP = path.join(path.dirname(OUT), "_teste_assets");
   await d.rodapeEstados(s, ESTADOS, mapa);
 
   // 5 · vidro neon
-  s = d.slide(); await d.fundo(s, "escuro", { transp: 40 }); d.cromo(s, { capitulo: 2 });
+  s = d.slide(); await d.fundo(s, "escuro", { transp: 40, expert: true }); d.cromo(s, { capitulo: 2 });
   d.cabecalho(s, "04", "Conclusão", ["ECONOMIA,", "INVESTIMENTO", "E RETORNO."], { tamanho: 54, w: 6 });
   await d.vidroNeon(s, 6.75, 0.75, 5.95, "Economia líquida mensal estimada", "R$ 177.194,35", "no cenário com recarga do BESS pela rede no horário fora de ponta", { pilula: "por mês" });
 
   // 6 · mostrador (Roda)
-  s = d.slide(); await d.fundo(s); d.cromo(s, { capitulo: 2 });
+  s = d.slide(); await d.fundo(s, "escuro", { expert: true }); d.cromo(s, { capitulo: 2 });
   d.cabecalho(s, "04", "Indicadores", ["RETORNO EM", "3,9 ANOS."], { tamanho: 54, w: 5 });
   await d.mostrador(s, 7.5, 1.2, 4.2, 3.9 / 25, "3,9", "anos de payback", "num horizonte de 25 anos", { cada: 20 });
 
   // 7 · mockup de iPhone
-  s = d.slide(); await d.fundo(s); d.cromo(s, { capitulo: 2 });
+  s = d.slide(); await d.fundo(s, "escuro", { expert: true }); d.cromo(s, { capitulo: 2 });
   d.cabecalho(s, null, "Conexão Green · Green Friday", ["LINK DE", "CONEXÃO."], { tamanho: 60, w: 7, y: 1.3 });
   d.iphone(s, tela, 8.6, 0.75, 2.45, { passo: "c1" });
 
@@ -88,7 +90,7 @@ const TMP = path.join(path.dirname(OUT), "_teste_assets");
   });
 
   // 9 · fecho (logo grande, sem o pequeno)
-  s = d.slide(); await d.fundo(s, "fumaca"); d.cromo(s, { capitulo: 3, logo: false });
+  s = d.slide(); await d.fundo(s, "fumaca", { expert: true }); d.cromo(s, { capitulo: 3, logo: false });
   s.addImage({ path: kit.ASSET("marca", "logo_white.png"), x: (W - 5.2) / 2, y: 2.55, w: 5.2, h: (5.2 * 386) / 1400, objectName: tag("Logo grande", "a", "zoom") });
   d.t(s, "#NOSSAENERGIATRANSFORMA", 0, 4.25, W, 0.4, { fontSize: 16, bold: true, color: C.G, align: "center", charSpacing: 6, objectName: tag("Hashtag", "a", "fade", 500) });
 
